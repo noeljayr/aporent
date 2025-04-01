@@ -1,0 +1,33 @@
+.navbar {
+  grid-template-columns: 16.5rem auto 16.5rem;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.navbar * {
+  user-select: none;
+}
+
+.navbar .links * {
+  font-size: var(--p2);
+}
+
+.navbar .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.navbar .links svg {
+  height: 0.95rem;
+  width: 0.95rem;
+}
+
+.navbar .links svg path {
+  fill: var(--black);
+}
+

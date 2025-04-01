@@ -1,0 +1,70 @@
+.expand-search .properties {
+  animation-name: expand;
+  animation-duration: 0.3s;
+  animation-timing-function: ease;
+}
+
+@keyframes expand {
+  from {
+    height: 85%;
+    width: 100%;
+  }
+  to {
+    height: 100%;
+    width: 70%;
+  }
+}
+
+@keyframes expand-reverse {
+  from {
+    height: 85%;
+    width: 70%;
+  }
+  to {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.collapse-search .properties {
+  animation-name: expand-reverse;
+  animation-duration: 0.3s;
+  animation-timing-function: ease;
+  width: 100%;
+}
+
+.properties {
+  width: 65%;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  grid-auto-rows: min-content;
+  grid-gap: 0.5rem;
+  gap: 0.5rem;
+  transition: ease 0.3s;
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 1440px) {
+  .properties {
+    width: 70%;
+  }
+}
+
+.properties .property {
+  background-color: var(--white);
+  width: 100%;
+  height: 10rem;
+  border-radius: var(--radius-m);
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.properties .selected-property {
+  border: 1px solid var(--primary);
+}
+
+.property-view {
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius-s) * 1.5);
+  position: fixed;
+}

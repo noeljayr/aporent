@@ -1,0 +1,16 @@
+.main-content {
+  grid-gap: 1rem;
+  gap: 1rem;
+  width: 100%;
+  position: relative;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.collapse-search {
+  padding-top: 4rem;
+}
+
+.expand-search {
+  padding-top: 0;
+}
