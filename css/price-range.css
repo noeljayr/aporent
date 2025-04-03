@@ -1,0 +1,79 @@
+
+.rent-range * {
+  user-select: none;
+}
+
+.rent-range .slider {
+  width: 100%;
+  position: relative;
+  height: 1rem;
+  border-radius: 2rem;
+  border: 1px solid var(--border);
+  background-color: #fafafa;
+  display: flex;
+  align-items: center;
+}
+
+.slider .track {
+  position: absolute;
+  background-color: var(--primary);
+  border-radius: 2rem;
+  height: 100%;
+  transition: ease 0.25s;
+}
+
+.slider .handle {
+  height: 0.75rem;
+  width: 0.75rem;
+  background-color: var(--white);
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: ease 0.25s;
+}
+
+.range-value {
+  position: absolute;
+  font-size: var(--p3);
+  border-radius: 2rem;
+  background-color: #f7f7f7;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  gap: 3px;
+}
+
+.range-value * {
+  font-size: var(--p3);
+  font-weight: 500;
+  line-height: 0%;
+}
+
+.range-value span {
+  opacity: 0.5 !important;
+}
+.range-input-options .radio-btn{
+  height: 1rem;
+  width: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.range-input-options .selected .radio-btn{
+  border: 5px solid var(--primary);
+}
+.range-input-options .option .option-label {
+  height: fit-content;
+  width: fit-content;
+  border: 0;
+  border-radius: 0;
+  font-size: var(--p3);
+  cursor: pointer;
+  opacity: 0.7;
+}

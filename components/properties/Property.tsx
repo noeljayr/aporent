@@ -9,15 +9,14 @@ interface PropertyTypes {
 }
 
 function Property(props: PropertyTypes) {
-  const { setExpandSearch } = useExandSearchStore();
-  const { setSelectedId, selectedId } = useSelectedPropertyStore();
+  const { setSelectedId, selectedId, setExpandProperty } = useSelectedPropertyStore();
 
   const selectProperty = (id: number) => {
     if (selectedId == id) {
-      setExpandSearch(true);
+      setExpandProperty(false);
       setSelectedId(null);
     } else {
-      setExpandSearch(true);
+      setExpandProperty(true);
       setSelectedId(props.id);
     }
   };

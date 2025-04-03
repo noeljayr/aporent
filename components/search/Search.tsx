@@ -5,6 +5,10 @@ import useExandSearchStore from "@/context/expandSearch";
 import { IconAdjustmentsOff } from "@tabler/icons-react";
 import { useCallback, useEffect, useState } from "react";
 import useSelectedPropertyStore from "@/context/selectedProperty";
+import Location from "./Location";
+import Status from "./Status";
+import Category from "./Category";
+import PriceRange from "./PriceRange";
 
 function Search() {
   const { setExpandSearch, expandSearch } = useExandSearchStore();
@@ -12,7 +16,7 @@ function Search() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   const handleScroll = useCallback(() => {
-    const scrolled = window.scrollY >= 5;
+    const scrolled = window.scrollY >= 35;
     setIsScrolled((prev) => (prev !== scrolled ? scrolled : prev));
   }, []);
 
@@ -32,11 +36,16 @@ function Search() {
     <div
       className={`search ${
         isScrolled ? "top-[1rem] scrolled" : "top-[4.5rem]"
-      } grid fixed gap-1 ${selectedId !== null ? "opacity-0" : "opacity-100"}`}
+      } grid fixed ${expandSearch ? "gap-3" : "gap-1"} ${
+        selectedId !== null
+          ? "opacity-0 invisible pointer-events-none"
+          : "opacity-100"
+      }`}
     >
-      <div></div>
-      <div></div>
-      <div></div>
+      <Location />
+      <Status />
+      <Category />
+      <PriceRange />
       <div
         className={`cta-container  ${
           expandSearch ? "gap-2 grid" : "gap-1 flex"

@@ -1,4 +1,5 @@
-.expand-search .properties {
+.expand-search .properties,
+.expand-property-view .properties {
   animation-name: expand;
   animation-duration: 0.3s;
   animation-timing-function: ease;
@@ -43,8 +44,15 @@
   margin-bottom: 1rem;
 }
 
+.expand-property-view .properties {
+  width: 65%;
+}
+
 @media screen and (min-width: 1440px) {
   .properties {
+    width: 70%;
+  }
+  .expand-property-view .properties {
     width: 70%;
   }
 }
@@ -67,4 +75,8 @@
   border: 1px solid var(--border);
   border-radius: calc(var(--radius-s) * 1.5);
   position: fixed;
+}
+
+.expand-property-view .scrolled{
+  height: calc(100vh - 2rem);
 }
