@@ -1,6 +1,6 @@
 "use client";
 
-import "@/css/price-range.css";
+import "@/css/search/price-range.css";
 import NumberFlow from "@number-flow/react";
 import React, { useState, useRef, useEffect } from "react";
 import useExandSearchStore from "@/context/expandSearch";
@@ -123,24 +123,24 @@ const PriceRange = () => {
           onClick={() => {
             setPreferedInput("slider");
           }}
-          className={`option flex gap-2 items-center ${
-            preferedInput == "slider" ? "selected" : ""
+          className={`radio-btn-container ${
+            preferedInput == "slider" ? "selected-radio-btn" : ""
           }`}
         >
           <span className="radio-btn" />
-          <span className="option-label">Slider</span>
+          <span className="radio-btn-label">Slider</span>
         </span>
 
         <span
           onClick={() => {
             setPreferedInput("custom");
           }}
-          className={`option flex gap-2 items-center ${
+          className={`radio-btn-container ${
             preferedInput == "custom" ? "selected" : ""
           }`}
         >
           <span className="radio-btn" />
-          <span className="option-label"> Custom range</span>
+          <span className="radio-btn-label"> Custom range</span>
         </span>
       </span>
       <div

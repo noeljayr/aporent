@@ -176,3 +176,98 @@ svg {
 .cta-2:hover {
   filter: var(--cta-hover);
 }
+
+.checkbox-container {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.checkbox-container .checkbox-label {
+  font-size: var(--p3);
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+.checkbox-container .checkbox {
+  height: 1rem;
+  width: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.25rem;
+  font-size: var(--p3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox-container .checkbox svg {
+  height: 0.75rem;
+  width: 0.75rem;
+  stroke-width: 2.5px;
+  stroke: var(--white);
+}
+
+.checkbox-container .checkbox svg:first-child {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+.checked-checkbox .checkbox {
+  background-color: var(--primary);
+  border: 1px solid transparent;
+}
+
+.checked-checkbox .checkbox svg:last-child {
+  transition: ease 1.5s;
+  animation: draw 1.5s ease forwards;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.radio-btn-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.radio-btn-container .radio-btn {
+  height: 1rem;
+  width: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.selected-radio-btn .radio-btn {
+  border: 5px solid var(--primary);
+}
+.radio-btn-container .radio-btn-label {
+  height: fit-content;
+  width: fit-content;
+  border: 0;
+  border-radius: 0;
+  font-size: var(--p3);
+  cursor: pointer;
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+.expand-search .search .checkbox-label,
+.expand-search .search .radio-btn-label {
+  opacity: 0.8;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.hide-scrollbar::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}

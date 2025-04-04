@@ -1,15 +1,16 @@
 "use client";
 
-import "@/css/search.css";
+import "@/css/search/search.css";
 import useExandSearchStore from "@/context/expandSearch";
 import { IconAdjustmentsOff } from "@tabler/icons-react";
 import { useCallback, useEffect, useState } from "react";
 import useSelectedPropertyStore from "@/context/selectedProperty";
 import Location from "./Location";
 import Status from "./Status";
-import Category from "./Category";
+import PropertyType from "./PropertyType";
 import PriceRange from "./PriceRange";
 import Input from "./Input";
+import Filters from "./Filters";
 
 function Search() {
   const { setExpandSearch, expandSearch } = useExandSearchStore();
@@ -37,20 +38,28 @@ function Search() {
     <div
       className={`search ${
         isScrolled ? "top-[1rem] scrolled" : "top-[4.5rem]"
-      } grid fixed ${expandSearch ? "gap-2 overflow-y-auto" : "gap-1"} ${
+      } grid fixed ${expandSearch ? "gap-2 overflow-hidden" : "gap-1"} ${
         selectedId !== null
           ? "opacity-0 invisible pointer-events-none"
           : "opacity-100"
       }`}
     >
       <Input />
-      <Location />
-      <Status />
-      <Category />
-      <PriceRange />
+
+      {expandSearch ? (
+        <Filters />
+      ) : (
+        <>
+          <Location />
+          <Status />
+          <PropertyType />
+          <PriceRange />
+        </>
+      )}
+
       <div
         className={`cta-container  ${
-          expandSearch ? "gap-2 grid absolute left-2 bottom-2" : "gap-1 flex"
+          expandSearch ? "gap-2 grid left-2 bottom-2" : "gap-1 flex"
         }`}
       >
         <button className="cta">{expandSearch ? "Filter" : "Search"}</button>

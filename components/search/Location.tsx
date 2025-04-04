@@ -65,7 +65,7 @@ function Location() {
   }, []);
 
   return (
-    <div className="location truncate flex flex-col justify-center px-2">
+    <div className="location filter truncate flex flex-col justify-center px-2">
       <span className="label font-medium cursor-pointer">Location</span>
 
       <span className="cursor-pointer filter-value grid">
@@ -74,7 +74,7 @@ function Location() {
             <span>Choose Location</span>
           ) : location ? (
             <>
-              Auto Detect {`(`}
+              Auto Detected {`(`}
               {formatLocation(location.city)}
               {`)`}
             </>

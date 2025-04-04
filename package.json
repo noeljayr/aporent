@@ -12,6 +12,7 @@
     "@fontsource/poppins": "^5.2.5",
     "@number-flow/react": "^0.5.8",
     "@tabler/icons-react": "^3.31.0",
+    "@tailwindcss/cli": "^4.1.3",
     "axios": "^1.8.4",
     "cookies-next": "^5.1.0",
     "framer-motion": "^12.6.2",
@@ -30,7 +31,6 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.2.4",
-    "tailwindcss": "^4",
     "typescript": "^5"
   }
 }
