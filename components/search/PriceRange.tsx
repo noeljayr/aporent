@@ -5,6 +5,7 @@ import NumberFlow from "@number-flow/react";
 import React, { useState, useRef, useEffect } from "react";
 import useExandSearchStore from "@/context/expandSearch";
 import { motion } from "framer-motion";
+import { formatAmountWithCommas } from "@/utils/formatNumber";
 
 const PriceRange = () => {
   const [min, setMin] = useState(0);
@@ -15,6 +16,10 @@ const PriceRange = () => {
   const [dragging, setDragging] = useState<"min" | "max" | null>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
   const [preferedInput, setPreferedInput] = useState("slider");
+  const minSpanRef = useRef<HTMLSpanElement>(null);
+  const maxSpanRef = useRef<HTMLSpanElement>(null);
+  const [minInputWidth, setMinInputWidth] = useState(2);
+  const [maxInputWidth, setMaxInputWidth] = useState(2);
 
   const getPercentage = (value: number) => ((value - min) / (max - min)) * 100;
 
@@ -61,9 +66,54 @@ const PriceRange = () => {
   const minPos = getPercentage(minVal);
   const maxPos = getPercentage(maxVal);
 
+  const handleMinInput = (e: React.FormEvent<HTMLInputElement>) => {
+    let text = e.currentTarget.value;
+    text = text.replace(/\D/g, "");
+
+    let num = parseInt(text, 10) || 0;
+
+    if (num < 0 || num.toString().length <= 0) {
+      num = 0;
+    }
+
+    if (num > maxVal) {
+      num = maxVal / 1.25;
+    }
+
+    setMinVal(num);
+    setMin(num);
+  };
+
+  const handleMaxInput = (e: React.FormEvent<HTMLInputElement>) => {
+    let text = e.currentTarget.value;
+    text = text.replace(/\D/g, "");
+
+    let num = parseInt(text, 10) || 0;
+
+    setMaxVal(num);
+    setMax(num);
+  };
+
+  useEffect(() => {
+    if (minSpanRef.current) {
+      const widthPx = minSpanRef.current.offsetWidth;
+      const widthRem = widthPx / 16;
+      setMinInputWidth(widthRem + 0.5);
+    }
+  }, [minVal]);
+
+  useEffect(() => {
+    if (maxSpanRef.current) {
+      const widthPx = maxSpanRef.current.offsetWidth;
+      let widthRem = widthPx / 16;
+      widthRem < 1.5 ? (widthRem = 4) : widthRem;
+      setMaxInputWidth(widthRem + 0.5);
+    }
+  }, [maxVal]);
+
   return (
     <div
-      className={`rent-range-container flex-col gap-2  ${
+      className={`rent-range-container flex-col gap-2 p-2  ${
         expandSearch ? "flex" : "hidden"
       }`}
     >
@@ -109,13 +159,44 @@ const PriceRange = () => {
             }`}
           >
             <span>K</span>{" "}
-            <span>
+            <span className="grid w-auto">
               <NumberFlow
+                className={`${preferedInput == "slider" ? "" : "hidden"}`}
                 value={minVal}
                 format={{
                   maximumFractionDigits: 0,
                 }}
               />
+              <span
+                className={`relative range-input ${
+                  preferedInput == "slider" ? "hidden" : "flex"
+                }`}
+              >
+                <input
+                  type="text"
+                  value={formatAmountWithCommas(minVal.toFixed(0))}
+                  onChange={handleMinInput}
+                  style={{
+                    overflow: "visible",
+                    height: "1.5rem",
+                    width:
+                      minVal.toString().length < 3
+                        ? `0.9rem`
+                        : `calc(${minInputWidth}rem - 0.75rem)`,
+                  }}
+                />
+
+                <span
+                  ref={minSpanRef}
+                  style={{
+                    position: "absolute",
+                    visibility: "hidden",
+                    whiteSpace: "pre",
+                  }}
+                >
+                  {formatAmountWithCommas(minVal.toFixed(0)) || " "}
+                </span>
+              </span>
             </span>
           </motion.span>
 
@@ -132,7 +213,7 @@ const PriceRange = () => {
             onMouseDown={() => handleMouseDown("min")}
             onTouchStart={() => handleMouseDown("min")}
             style={{
-              left: `${minPos + 2}%`,
+              left: `${minPos + 2.35}%`,
             }}
           />
 
@@ -141,7 +222,7 @@ const PriceRange = () => {
             onMouseDown={() => handleMouseDown("max")}
             onTouchStart={() => handleMouseDown("max")}
             style={{
-              left: `${maxPos - 2}%`,
+              left: `${maxPos - 2.25}%`,
             }}
           />
 
@@ -157,7 +238,7 @@ const PriceRange = () => {
               preferedInput == "slider" ? "top-[-2rem]" : "top-[1.5rem]"
             }`}
           >
-            <span>K</span>{" "}
+            <span>K</span>
             <span className="grid w-auto">
               <NumberFlow
                 className={`${preferedInput == "slider" ? "" : "hidden"}`}
@@ -167,12 +248,50 @@ const PriceRange = () => {
                 }}
               />
 
-              <input
-                className={`${preferedInput == "slider" ? "hidden" : "w-fit"}`}
-                onChange={(e) => setMax(parseFloat(e.target.value))}
-                type="text"
-                value={max}
-              />
+              <span
+                className={`relative range-input ${
+                  preferedInput == "slider" ? "hidden" : "flex"
+                }`}
+              >
+                <input
+                  type="text"
+                  value={formatAmountWithCommas(maxVal.toFixed(0))}
+                  onChange={handleMaxInput}
+                  onBlur={(e) => {
+                    let num = parseInt(e.currentTarget.value)
+                    if (num < 10000) {
+                      num = 10000;
+                    }
+                    if (num < minVal) {
+                      num = minVal * 1.25;
+                    }
+
+                    setMaxVal(num);
+                    setMax(num);
+                  }}
+
+
+                  style={{
+                    overflow: "visible",
+                    height: "1.5rem",
+                    width:
+                      maxVal.toString().length < 3
+                        ? `0.9rem`
+                        : `calc(${maxInputWidth}rem - 1rem)`,
+                  }}
+                />
+
+                <span
+                  ref={maxSpanRef}
+                  style={{
+                    position: "absolute",
+                    visibility: "hidden",
+                    whiteSpace: "pre",
+                  }}
+                >
+                  {formatAmountWithCommas(maxVal.toFixed(0)) || " "}
+                </span>
+              </span>
             </span>
           </motion.span>
         </div>

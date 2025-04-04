@@ -25,6 +25,10 @@
   margin: 0;
 }
 
+.expand-search .cta-container {
+  margin-top: auto;
+}
+
 @media screen and (min-width: 1440px) {
   .search {
     width: 50%;
@@ -58,8 +62,9 @@
 }
 
 .expand-search .cta-container {
-  width: 100%;
+  width: calc(100% - 1rem);
   grid-template-columns: 1fr auto;
+  background-color: var(--white);
 }
 
 .collapse-search .cta {
@@ -115,6 +120,11 @@
   border-radius: var(--radius-s);
 }
 
+.collapse-search .search .cta-container {
+  background-color: transparent;
+  border: 0;
+}
+
 @keyframes collapse-search-container {
   0% {
     opacity: 0;
@@ -161,4 +171,45 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-s);
   height: 2.75rem;
+}
+
+.expand-search .category,
+.expand-search .location,
+.expand-search .status {
+  background-color: rgba(250, 248, 248, 0.35);
+}
+
+.expand-search .rent-range-container {
+  background-color: rgba(250, 248, 248, 0.35);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-s);
+}
+
+.search-input-box {
+  height: 2.5rem;
+  width: 100%;
+  background-color: rgba(250, 248, 248, 0.15);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-s);
+  grid-template-columns: auto 1fr;
+  padding-left: 0.5rem;
+}
+
+.search-input-box input {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: var(--p2);
+  font-weight: 500;
+}
+
+.search-input-box svg {
+  height: 1rem;
+  width: 1rem;
+  stroke: var(--black);
+  stroke-width: 2px;
+}
+.expand-search .search-input-box svg {
+  opacity: 0.7;
 }

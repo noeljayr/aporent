@@ -9,6 +9,7 @@ import Location from "./Location";
 import Status from "./Status";
 import Category from "./Category";
 import PriceRange from "./PriceRange";
+import Input from "./Input";
 
 function Search() {
   const { setExpandSearch, expandSearch } = useExandSearchStore();
@@ -36,19 +37,20 @@ function Search() {
     <div
       className={`search ${
         isScrolled ? "top-[1rem] scrolled" : "top-[4.5rem]"
-      } grid fixed ${expandSearch ? "gap-3" : "gap-1"} ${
+      } grid fixed ${expandSearch ? "gap-2 overflow-y-auto" : "gap-1"} ${
         selectedId !== null
           ? "opacity-0 invisible pointer-events-none"
           : "opacity-100"
       }`}
     >
+      <Input />
       <Location />
       <Status />
       <Category />
       <PriceRange />
       <div
         className={`cta-container  ${
-          expandSearch ? "gap-2 grid" : "gap-1 flex"
+          expandSearch ? "gap-2 grid absolute left-2 bottom-2" : "gap-1 flex"
         }`}
       >
         <button className="cta">{expandSearch ? "Filter" : "Search"}</button>

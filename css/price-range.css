@@ -46,6 +46,11 @@
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   gap: 3px;
+  outline: 1px solid transparent;
+}
+
+.range-value:focus-within{
+  outline: 1px solid var(--secondary);
 }
 
 .range-value * {
@@ -76,4 +81,22 @@
   font-size: var(--p3);
   cursor: pointer;
   opacity: 0.7;
+}
+
+
+
+.range-input {
+  height: 1.25rem;
+  align-items: center;
+ width: fit-content;
+  outline: 0;
+  opacity: 1;
+}
+
+.range-value .range-input{
+  opacity: 1 !important;
+}
+
+.range-value .range-input input{
+  outline: 0;
 }
