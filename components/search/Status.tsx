@@ -1,4 +1,5 @@
 import { IconChevronDown, IconCheck } from "@tabler/icons-react";
+import CheckMark from "../svg/CheckMark";
 import useExandSearchStore from "@/context/expandSearch";
 
 function Status() {
@@ -13,25 +14,25 @@ function Status() {
       <div className="statuses h-fit filters-grid grid grid-cols-2  gap-2 mt-2">
         <span className="checkbox-container checked-checkbox">
           <span className="checkbox">
-            <IconCheck />
+            <CheckMark />
           </span>
           <span className="checkbox-label">Unoccupied</span>
         </span>
         <span className="checkbox-container">
           <span className="checkbox">
-            <IconCheck />
+            <CheckMark />
           </span>
           <span className="checkbox-label">Occupied</span>
         </span>
         <span className="checkbox-container">
           <span className="checkbox">
-            <IconCheck />
+            <CheckMark />
           </span>
           <span className="checkbox-label">Being viewed</span>
         </span>
         <span className="checkbox-container">
           <span className="checkbox">
-            <IconCheck />
+            <CheckMark />
           </span>
           <span className="checkbox-label">Not being viewed</span>
         </span>

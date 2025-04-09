@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 html {
-  font-family: "Poppins", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: clamp(14px, 1.45vw, 1.25em);
   scroll-behavior: smooth;
   scroll-padding-top: 6rem;
@@ -63,7 +63,7 @@ html {
   box-sizing: border-box;
   font-size: var(--p1);
   scroll-behavior: smooth;
-  font-family: "Poppins", sans-serif;
+  font-family: "Inter", sans-serif;
   transition: var(--transition);
 }
 
@@ -86,33 +86,33 @@ h1 {
   font-size: var(--h1);
   font-weight: 600;
   line-height: 130%;
-  font-family: "Poppins", sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 h1 span {
   font-size: var(--h1);
   font-weight: 600;
-  font-family: "Poppins", sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 h2 {
   font-size: var(--h2);
   font-weight: 600;
   line-height: 130%;
-  font-family: "Poppins", sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 h3 {
   font-size: var(--h3);
   font-weight: 600;
   line-height: 150%;
-  font-family: "Poppins", sans-serif;
+  font-family: "Inter", sans-serif;
 }
 h4 {
   font-weight: 600;
   font-size: var(--h4);
   line-height: 180%;
-  font-family: "Poppins", sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 p {
@@ -147,7 +147,7 @@ a {
   user-select: none;
   outline: none;
   border: none;
-  font-family: "Poppins", sans-serif;
+  font-family: "Inter", sans-serif;
   background-color: var(--primary);
   font-size: var(--p2);
   height: 2.5rem;
@@ -206,11 +206,7 @@ svg {
   width: 0.75rem;
   stroke-width: 2.5px;
   stroke: var(--white);
-}
-
-.checkbox-container .checkbox svg:first-child {
-  stroke-dasharray: 100;
-  stroke-dashoffset: 100;
+  visibility: hidden;
 }
 
 .checked-checkbox .checkbox {
@@ -218,13 +214,20 @@ svg {
   border: 1px solid transparent;
 }
 
-.checked-checkbox .checkbox svg:last-child {
-  transition: ease 1.5s;
-  animation: draw 1.5s ease forwards;
+.checked-checkbox .checkbox svg {
+  opacity: 1;
+  visibility: visible;
+  stroke-dasharray: 28;
+  stroke-dashoffset: 28;
+  transition: initial !important;
+  animation: drawCheck 5s ease forwards !important;
 }
 
-@keyframes draw {
-  to {
+@keyframes drawCheck {
+  0% {
+    stroke-dashoffset: 20;
+  }
+  100% {
     stroke-dashoffset: 0;
   }
 }
@@ -271,3 +274,26 @@ svg {
   width: 0px;
   height: 0px;
 }
+
+
+.feature {
+  background-color: #ededed;
+  border: 1px solid var(--border);
+  border-radius: 2rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  font-size: var(--p4);
+}
+
+
+.feature span {
+  font-size: var(--p4);
+  line-height: 0%;
+  text-align: center;
+  white-space: nowrap;
+  opacity: 0.75;
+}
+

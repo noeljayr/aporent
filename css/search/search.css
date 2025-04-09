@@ -39,18 +39,24 @@
 .property-view {
   display: flex;
   flex-direction: column;
-  width: calc(35% - 1rem);
-  right: 0%;
+  width: calc(35% - 2rem);
+  right: 1rem;
   transform: translateX(0%);
   height: calc(100vh - 5.5rem);
   align-items: initial;
   padding: 0.5rem;
 }
 
+.property-view{
+  width: calc(50% - 2rem);
+  transform: translateX(-1rem);
+}
+
 .expand-search .search {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr auto;
+  border-radius: var(--radius);
 }
 
 .property-view {

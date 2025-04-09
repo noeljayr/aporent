@@ -1,8 +1,8 @@
 import { create } from "zustand";
 
 interface SelectedTypes {
-  selectedId: number | null;
-  setSelectedId: (id: number | null) => void;
+  selectedId: string | null;
+  setSelectedId: (id: string | null) => void;
   expandProperty: boolean;
   setExpandProperty: (expanded: boolean) => void;
 }

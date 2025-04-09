@@ -11,7 +11,7 @@ function Filters() {
   const { expandSearch } = useExandSearchStore();
   return (
     <div
-      className={`filters-container mask-b-from-50% hide-scrollbar gap-2 ${expandSearch ? "grid" : "hidden"}`}
+      className={`filters-container hide-scrollbar gap-2 ${expandSearch ? "grid" : "hidden"}`}
     >
       <Location />
       <Status />
